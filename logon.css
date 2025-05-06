@@ -39,7 +39,7 @@ body {
     border-radius: 5px;
 }
 
-.buttom-conteiner a {
+.login-container button {
     width: 60%;
     padding: 10px;
     background-color: #a3afb8;
