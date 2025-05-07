@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: #a3afb8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,8 +22,11 @@ body {
     margin-bottom: 200px;
 }
 .mensage-attention{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: -150px;
-    margin-bottom: 75px;
+    margin-bottom: 80px;
     width: 100%;
     height: 115px;
     padding: 4px;
@@ -64,7 +67,7 @@ body {
     padding: 15px;
     margin: 5px;
     margin-left: 2%;
-    background-color: #a3afb8;
+    background-color: #8e9499;
     border: none;
     color: white;
     font-weight: bold;
@@ -72,7 +75,7 @@ body {
     cursor: pointer;
 }
 .login-container button:hover{
-    background-color: yellow;
+    background-color: #414547;
 }
 .button-container {
     display: flex;
@@ -81,4 +84,14 @@ body {
 .button-container button{
     margin-top: 10px;
     width: 45%;
+}
+
+h4 {
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+}
+p {
+    margin: 0;
+    padding: 0;
 }

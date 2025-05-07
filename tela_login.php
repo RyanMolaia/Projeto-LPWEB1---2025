@@ -1,9 +1,10 @@
+<?php include("banco.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
+    <title>👤 Login</title>
     <link rel="stylesheet" href="logon.css">
 </head>
 <body>
@@ -12,9 +13,11 @@
             <h2>Login</h2>
         </div>
         <div class="mensage-attention">
-            <h4>Atenção:</h4>
-            <p>Caso deseje criar usuário de Administrador</p>
-            <p>por favor consutar suporte ou equipe de TI</p>
+            <div>
+                <h4>Atenção!</h4>
+                <p>Caso deseje criar usuário de Administrador</p>
+                <p>por favor consutar suporte ou equipe de TI</p>
+            </div>
         </div>
 
             <form action="#" method="post">
