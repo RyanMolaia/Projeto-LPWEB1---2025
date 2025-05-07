@@ -19,13 +19,8 @@
 
             <form action="#" method="post">
                 <div class="input-group">
-                    <label for="usuario">User:</label>
-                    <input type="text" id="usuario" name="usuario" required>
-                </div>
-                
-                <div class="input-group">
-                    <label for="senha">Password:</label>
-                    <input type="text" id="senha" name="senha" required>
+                    <input type="text" id="usuario" name="usuario" placeholder="Usuário" required>
+                    <input type="text" id="senha" name="senha" placeholder="Senha" required>
                 </div>   
                 
                 <div class="forget-password">         
