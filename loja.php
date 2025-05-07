@@ -17,8 +17,8 @@
                 <button>🔍</button>
             </div>
             <div class="direita">
-                <a href="">👤 Conta</a>
-                <a href="">🛒 Carrinho</a>
+                <a href="tela_login.php">👤 Conta</a>
+                <a href="carrinho.php">🛒 Carrinho</a>
             </div>
         </div>
     </header>
