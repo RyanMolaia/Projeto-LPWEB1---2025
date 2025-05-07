@@ -8,7 +8,15 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Login<h2>
+        <div class="title">
+            <h2>Login</h2>
+        </div>
+        <div class="mensage-attention">
+            <h4>Atenção:</h4>
+            <p>Caso deseje criar usuário de Administrador</p>
+            <p>por favor consutar suporte ou equipe de TI</p>
+        </div>
+
             <form action="#" method="post">
                 <div class="input-group">
                     <label for="usuario">User:</label>
@@ -18,12 +26,18 @@
                 <div class="input-group">
                     <label for="senha">Password:</label>
                     <input type="text" id="senha" name="senha" required>
-                </div>            
+                </div>   
                 
-                <div class="buttom-container">
+                <div class="forget-password">         
+                    <a href="#">Esqueceu sua senha</a>
+                </div>  
+                
+                <div class="button-container">
                     <button type="submit">Entrar</button>
-                </div>            
-            </div>
+
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
     </div>
 </body>
 </html>
