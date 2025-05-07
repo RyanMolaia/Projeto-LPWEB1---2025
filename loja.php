@@ -1,4 +1,3 @@
-<?php include("banco.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
     <header>
         <div class="topo">
             <div class="esquerda">
-                <a href="#sidebar" id="btn-departamento">☰ Departamentos</a>
+                <a href="#sidebar" id="btn-departamento">☰</a>
             </div>
             <div class="meio">
                 <input type="text" placeholder="Buscar">
@@ -36,7 +35,9 @@
         </div>
     </aside>
     <main class="exebicao-produtos">
-       <?php
+        <?php
+
+            include("banco.php"); 
 
             $sql = "SELECT * FROM produtos";
             $resultado = $conexao->query($sql);
@@ -46,16 +47,17 @@
                     echo "<div class='produto'>
                             <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
                             <h3>{$produto['nome']}</h3>
-                            <p>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
-                            <button>Comprar</button>
+                            <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
+                            <div class='botoes'>
+                                <button>Adicionar ao Carrinho</button>
+                            </div>
                         </div>";
                 }
             }else{
                 echo "<p>Nenhum produto encontrado.</p>";
             }
-
             $conexao->close();
-            ?>
+        ?>
     </main>
 </body>
 </html>

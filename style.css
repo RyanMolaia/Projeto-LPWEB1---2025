@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+    background-color: #a3afb8;
 }
 
 .topo{
@@ -107,3 +107,80 @@ body {
     color: white;
     text-decoration: none;
 }
+
+.exebicao-produtos{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    
+}
+
+.produto{
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto:hover{
+    transform: scale(1.02);
+}
+
+.produto img{
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.produto .preco{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.produto h3{
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.produto p{
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.produto .btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.produto .botoes button{
+    padding: 8px 12px;
+    background-color: #00ff22;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.produto .botoes button:hover {
+    background-color: #046b16;
+}
+
