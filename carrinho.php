@@ -9,18 +9,27 @@
 </head>
 <body>
     <header>
-        <div class="topo">
-            <div class="esquerda">
-                <a href="#sidebar" id="btn-departamento">☰ Departamentos</a>
+        <div class="top">
+            <div class="left">
+                <a href="#sidebar" id="btn-departament">☰</a>
             </div>
-            <div class="meio">
+            <div class="middle">
                 <h2> Meu carrinho </h2>
             </div>
-            <div class="direita">
-                <a href="">👤 Conta</a>
-                <a href="">🛒 Carrinho</a>
+            <div class="right">
+                <a href="tela_login.php">👤 Conta</a>
             </div>
         </div>
     </header>
-    </body>
+    <div class="geral-cart">
+        <div class="container-product">
+        </div>
+
+        <div class="container-resume">
+            <h3>Resumo</h3>
+            
+
+        </div>
+    </div>
+</body>
 </html>
