@@ -12,9 +12,14 @@
             <div class="esquerda">
                 <a href="#sidebar" id="btn-departamento">☰</a>
             </div>
+            <div>
+                <a href="loja.php"><img class="logo" src="img/logo.png"></a>
+            </div>
             <div class="meio">
-                <input type="text" placeholder="Buscar">
-                <button>🔍</button>
+                <form action="loja.php" method="POST">
+                    <input type="text" name="buscar" placeholder="Buscar">
+                    <button>🔍</button>
+                </form>
             </div>
             <div class="direita">
                 <a href="tela_login.php">👤 Conta</a>
@@ -39,7 +44,14 @@
 
             include("banco.php"); 
 
+            $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
+
             $sql = "SELECT * FROM produtos";
+
+            if(!empty($busca)){
+                $sql .= " WHERE LOWER(nome) LIKE LOWER('%$busca%')";
+            }
+
             $resultado = $conexao->query($sql);
 
             if($resultado->num_rows > 0){

@@ -10,6 +10,9 @@
 <body>
     <div class="login-container">
         <div class="title">
+            <div class="img">
+                <a class="" href="loja.php"><img class="logo" src="img/logo.png"></a>
+            </div>
             <h2>Login</h2>
         </div>
         <div class="mensage-attention">

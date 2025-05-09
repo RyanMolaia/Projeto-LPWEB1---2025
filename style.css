@@ -27,17 +27,22 @@ body {
     display: flex;
     flex: 1;
     justify-content: center;
-    margin: 0 20px;
 }
 
-.meio input{
-    padding: 8px;
+.meio form{
+    display: flex;
+    align-items: center;
+}
+
+.meio form input{
+    padding:9px;
     width: 300px;
     border: none;
     border-radius: 4px 0 0 4px;
+    outline: none;
 }
 
-.meio button{
+.meio form button{
     padding: 8px 12px;
     border: none;
     background-color: #ffffff;
@@ -55,6 +60,12 @@ body {
 
 .direita a:hover{
     text-decoration: none;
+}
+
+.logo{
+    width: 100px;
+    height: auto;   
+    margin-left: 10px;
 }
 
 #fechar-sidebar{

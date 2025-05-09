@@ -11,7 +11,7 @@
     <header>
         <div class="top">
             <div class="left">
-                <a href="#sidebar" id="btn-departament">☰</a>
+                <a href="loja.php"><img class="logo" src="img/logo.png"></a>
             </div>
             <div class="middle">
                 <h2> Meu carrinho </h2>

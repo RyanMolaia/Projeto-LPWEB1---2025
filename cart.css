@@ -79,3 +79,9 @@ body {
     border-bottom: 1px solid #FFFF;
     margin-bottom: 50px;
 }
+
+.logo {
+    width: 100px;
+    height: auto;   
+    margin-left: 10px;
+}
