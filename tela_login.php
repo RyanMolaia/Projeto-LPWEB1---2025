@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👤 Login</title>
+    <title>Login</title>
     <link rel="stylesheet" href="logon.css">
 </head>
 <body>
@@ -15,15 +15,15 @@
         <div class="mensage-attention">
             <div>
                 <h4>Atenção!</h4>
-                <p>Caso deseje criar usuário de Administrador</p>
+                <p>Caso deseje criar ou acessar usuário de Administrador</p>
                 <p>por favor consutar suporte ou equipe de TI</p>
             </div>
         </div>
 
             <form action="#" method="post">
                 <div class="input-group">
-                    <input type="text" id="usuario" name="usuario" placeholder="Usuário" required>
-                    <input type="text" id="senha" name="senha" placeholder="Senha" required>
+                    <input type="text" id="usuario" name="usuario" placeholder="👤 Usuário" required>
+                    <input type="text" id="senha" name="senha" placeholder="🔑 Senha" required>
                 </div>   
                 
                 <div class="forget-password">         
