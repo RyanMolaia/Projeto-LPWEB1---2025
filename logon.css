@@ -40,6 +40,7 @@ body {
 .input-group input{
     display: flex;
     margin-bottom: 20px;
+    justify-content: center;
 }
 .login-container a{
     color: #057ad7;
@@ -79,7 +80,7 @@ body {
 }
 .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .button-container button{
     margin-top: 10px;
