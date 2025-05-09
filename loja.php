@@ -31,7 +31,7 @@
     <aside id="sidebar">
         <a href="#" id="fechar-sidebar">🡸</a>
         <ul>
-            <li><a href="">Desktops</a></li>
+            <li><a href="p">Desktops</a></li>
             <li><a href="">Monitores</a></li>
             <li><a href="">Notebooks</a></li>
         </ul>
