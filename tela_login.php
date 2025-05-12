@@ -15,15 +15,7 @@
             </div>
             <h2>Login</h2>
         </div>
-        <div class="mensage-attention">
-            <div>
-                <h4>Atenção!</h4>
-                <p>Caso deseje criar ou acessar usuário de Administrador</p>
-                <p>por favor consutar suporte ou equipe de TI</p>
-            </div>
-        </div>
-
-            <form action="#" method="post">
+            <form  action="#" method="post">
                 <div class="input-group">
                     <input type="text" id="usuario" name="usuario" placeholder="👤 Usuário" required>
                     <input type="text" id="senha" name="senha" placeholder="🔑 Senha" required>
