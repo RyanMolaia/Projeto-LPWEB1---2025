@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #a3afb8;
+}
+
+.topo{
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#btn-departamento{
+    background: white;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.meio {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.direita a{
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.direita a:hover{
+    text-decoration: none;
+}
+
+.logo{
+    width: 100px;
+    height: auto;   
+    margin-left: 10px;
+}
+
+#fechar-sidebar{
+    color: white;
+    border: none;
+    font-size: 20px;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+#sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    transform: translateX(-250px);
+    color: white;
+    width: 200px;
+    height: 100%;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+#sidebar:target{
+    transform: translateX(0);
+}
+.suporte{
+    padding-top: 20px;
+    border-top: 1px solid white;
+}
+
+.suporte a{
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar ul{
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar ul li{
+    margin: 20px 0;
+}
+
+#sidebar ul li a{
+    color: white;
+    text-decoration: none;
+}
+

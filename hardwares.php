@@ -37,7 +37,7 @@
             <li><a href="hardwares.php">Hardwares</a></li>
         </ul>
         <div class="suporte">
-            <a href="suporte.php">Suporte</a>
+            <a href="">Suporte</a>
         </div>
     </aside>
     <main class="exebicao-produtos">
@@ -47,7 +47,10 @@
 
             $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
 
-            $sql = "SELECT * FROM produtos WHERE qtd_estoque > 0";
+            $sql = "SELECT p.* 
+                    FROM produtos p 
+                    JOIN categorias c ON p.categorias_id = c.id 
+                    WHERE c.id = 4 AND p.qtd_estoque > 0;";
 
             if(!empty($busca)){
                 $sql .= " WHERE LOWER(nome) LIKE LOWER('%$busca%')";
