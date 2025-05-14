@@ -103,3 +103,7 @@ body {
 .button-container button:hover{
     background-color: #414547;
 }
+
+.space {
+    height: 160px;
+}

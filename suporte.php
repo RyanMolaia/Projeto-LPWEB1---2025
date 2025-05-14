@@ -13,7 +13,7 @@
                 <a href="#sidebar" id="btn-departamento">☰</a>
             </div>
             <div>
-                <a href="loja.php"><img class="logo" src="img/logo.png"></a>
+                <a href="loja.php"><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <div class="meio">
                 <h3>Suporte StoreComp</h3>

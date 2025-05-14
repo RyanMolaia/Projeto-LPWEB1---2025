@@ -11,19 +11,20 @@
     <div class="login-container">
         <div class="title">
             <div class="img">
-                <a class="" href="loja.php"><img class="logo" src="img/logo.png"></a>
+                <a class="" href="loja.php"><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <h2>Login</h2>
         </div>
-            <form  action="#" method="post">
+        <div class="space"></div>
+            <form  action="validar_usuario.php" method="post">
                 <div class="input-group">
-                    <input type="text" id="usuario" name="usuario" placeholder="👤 Usuário" required>
-                    <input type="text" id="senha" name="senha" placeholder="🔑 Senha" required>
-                </div>   
+                    <input type="text" id="user" name="user" placeholder="👤 Usuário" required>
+                    <input type="text" id="password" name="password" placeholder="🔑 Senha" required>
+                </div>
                 
-                <div class="forget-password">         
+                <div class="forget-password">
                     <a href="#">Esqueceu sua senha</a>
-                </div>  
+                </div>
                 
                 <div class="button-container">
                     <button type="submit">Entrar</button>
