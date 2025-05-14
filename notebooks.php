@@ -53,7 +53,7 @@
                     WHERE c.id = 3 AND p.qtd_estoque > 0;";
 
             if(!empty($busca)){
-                $sql .= " WHERE LOWER(nome) LIKE LOWER('%$busca%')";
+                $sql .= " AND LOWER(nome) LIKE LOWER('%$busca%')";
             }
 
             $resultado = $conexao->query($sql);
