@@ -26,7 +26,7 @@
             <form action="#" method="post">
                 <div class="input-group">
                     <input type="text" id="usuario" name="usuario" placeholder="👤 Usuário" required>
-                    <input type="text" id="senha" name="senha" placeholder="🔑 Senha" required>
+                    <input type="password" id="senha" name="senha" placeholder="🔑 Senha" required>
                 </div>   
                 <div class="button-container">
 

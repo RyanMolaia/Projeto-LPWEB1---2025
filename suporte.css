@@ -73,9 +73,18 @@ body {
 #sidebar:target{
     transform: translateX(0);
 }
-.suporte{
+
+.voltar{
     padding-top: 20px;
     border-top: 1px solid white;
+}
+
+.voltar a{
+    color: white;
+    text-decoration: none;
+}
+.suporte{
+    padding-top: 20px;
 }
 
 .suporte a{
