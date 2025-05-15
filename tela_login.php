@@ -19,7 +19,7 @@
             <form  action="validar_usuario.php" method="post">
                 <div class="input-group">
                     <input type="text" id="user" name="user" placeholder="👤 Usuário" required>
-                    <input type="text" id="password" name="password" placeholder="🔑 Senha" required>
+                    <input type="password" id="password" name="password" placeholder="🔑 Senha" required>
                 </div>
                 
                 <div class="forget-password">
