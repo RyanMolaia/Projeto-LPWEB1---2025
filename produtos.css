@@ -7,7 +7,7 @@ body {
 .topo{
     background-color: black;
     color: white;
-    padding: 10px 20px;
+    padding: 6px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,28 +36,6 @@ body {
     display: flex;
     flex: 1;
     justify-content: center;
-}
-
-.meio form{
-    display: flex;
-    align-items: center;
-}
-
-.meio form input{
-    padding:8px;
-    width: 300px;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    outline: none;
-}
-
-.meio form button{
-    padding: 8px 12px;
-    border: none;
-    background-color: #ffffff;
-    color: white;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
 }
 
 .direita{
@@ -143,3 +121,84 @@ body {
     text-decoration: none;
 }
 
+.busca{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.busca form input{
+    padding:8px;
+    width: 300px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.busca form{
+    display: flex;
+    align-items: center;
+}
+
+.busca form .pesquisa{
+    padding: 7px 12px;
+    border: none;
+    background-color: #ffffff;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.adicionarproduto{
+    padding: 8px 12px;
+    background-color: #2546fd;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
+    margin-left: 2px;
+    color: white;
+}
+
+.tabela-main{
+    padding: 20px;
+}
+
+.tabela .cabecalho{
+    border-bottom: 2px solid #dddddd;
+}
+
+.tabela{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabela th, .tabela td{
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.tabela tbody tr{
+    border-bottom: 2px solid #dddddd;
+}
+
+.tabela tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.tabela .linha{
+    display: flex;
+    gap: 10px;
+}
+
+.tabela .editar, .tabela .excluir{
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
