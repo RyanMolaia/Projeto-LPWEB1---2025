@@ -23,7 +23,7 @@
             <aside id="sidebar">
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
-                        <li><a href="monitores.php">Cadastro de Funcionário</a></li>
+                        <li><a href="monitores.php">Cadastro de Usuários</a></li>
                         <li><a href="notebooks.php">Relatórios</a></li>
                     </ul>
             <div class="voltar">
@@ -66,7 +66,6 @@
                 }
                 
                 $retorno = $conexao->query($sql);
-
                 foreach($retorno as $linha){
                     echo "<tr>
                         <td>" . $linha['id'] . "</td>
@@ -75,8 +74,8 @@
                         <td>" . $linha['categorias_id'] . "</td>
                         <td>" . $linha['qtd_estoque'] . "</td>
                         <td class='linhas'>
-                            <a href='editar_cliente.php?id=".$linha['id']."' class='editar'>✏️</a>
-                            <a href='deletar_cliente.php?id=".$linha['id']."' class='excluir' onclick=\"return confirm('Tem certeza?')\">🗑️</a>
+                            <a href='editar_produto.php?id=". $linha['id']."' class='editar'>✏️</a>
+                            <a href='deletar_produto.php?id=". $linha['id'] ."' class='excluir' onclick=\"return confirm('Tem certeza?')\">🗑️</a>
                     </td>
                     </tr>";
                 }
