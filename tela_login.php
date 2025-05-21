@@ -1,11 +1,10 @@
-<?php include("banco.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="logon.css">
+    <link rel="stylesheet" href="tela_login_cliente.css">
 </head>
 <body>
     <div class="login-container">
@@ -20,10 +19,13 @@
             <form  action="validar_usuario.php" method="post">
                     <input type="text" id="user" name="user" placeholder="👤 Usuário" required>
                     <input type="password" id="password" name="password" placeholder="🔑 Senha" required>
-                    <a href="#">Esqueceu sua senha</a>
-                    <button type="submit">Entrar</button>
+                    <a class="esq-senha" href="#">Esqueceu sua senha</a>
+                    <div class="buttons">
+                        <button type="submit">Entrar</button>
+                        <a href="tela_cadastro.php">Cadastrar</a>
+                    </div>
             </form>
-                    <button type="submit">Cadastrar</button>
+                    
         </div> 
     </div>
 </body>

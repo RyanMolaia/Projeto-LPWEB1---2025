@@ -20,16 +20,20 @@ $result = $statement->get_result(); // pea o resultado
 if($result->num_rows === 1){
     $usuario = $result->fetch_assoc();
 
-    if(password_verify($senha, $usuario['senha'])) {
+    if($senha == $usuario['senha']) {
         header("Location: menu_cliente.php"); 
         exit;
     }
     else{
-        echo "Senha errada";
+       $_SESSION['erro_login'] = 'Senha errada!';
+        header("Location: tela_login.php");
+        exit;
     }
 }
 else{
-    echo "Usuario errado";
+    $_SESSION['erro_login'] = 'Usuário errado!';
+    header("Location: tela_login.php");
+    exit;
 }
 $statement->close();
 $conexao->close();
