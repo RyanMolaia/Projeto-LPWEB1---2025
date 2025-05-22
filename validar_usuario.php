@@ -25,15 +25,21 @@ if($result->num_rows === 1){
         exit;
     }
     else{
-       $_SESSION['erro_login'] = 'Senha errada!';
-        header("Location: tela_login.php");
-        exit;
+       echo "
+       <script>
+            alert('Senha Incorreta');
+            window.location.href = 'tela_login.php';
+        </script>
+        ";
     }
 }
 else{
-    $_SESSION['erro_login'] = 'Usuário errado!';
-    header("Location: tela_login.php");
-    exit;
+        echo "
+        <script>
+            alert('Usuário desconhecido!');
+            window.location.href = 'tela_login.php';
+        </script>
+                ";
 }
 $statement->close();
 $conexao->close();

@@ -1,4 +1,3 @@
-<?php include("banco.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +19,8 @@
                     <input type="text" id="user" name="user" placeholder="👤 Usuário" required>
                     <input type="password" id="password" name="password" placeholder="🔑 Senha" required>
                     <input type="password" id="password_confirm" name="password_confirm" placeholder="🔑 Confirmar senha" required>
-                    <input type="text" id="e-mail" name="e-mail" placeholder="📧 E-mail" required>
-                    <input type="text" id="telefone" name="telefone" placeholder="☎️ Telefone" required>
+                    <input type="email" id="e-mail" name="e-mail" placeholder="📧 E-mail" required>
+                    <input type="number" id="telefone" name="telefone" placeholder="☎️ Telefone" required>
                 </div>
 
                 <div class="button-container">
