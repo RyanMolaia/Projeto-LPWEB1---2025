@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,11 @@
                 </form>
             </div>
             <div class="direita">
-                <a href="tela_login.php">👤 Conta</a>
+                <?php if(isset($_SESSION['usuario'])): ?>
+                    <a href="menu_cliente.php">👤 Conta</a>
+                <?php else: ?>
+                    <a href="tela_login.php">👤 Conta</a>
+                <?php endif; ?>
                 <a href="carrinho.php">🛒 Carrinho</a>
             </div>
         </div>

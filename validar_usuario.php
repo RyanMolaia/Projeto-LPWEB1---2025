@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include("banco.php");
 
 
@@ -21,6 +21,7 @@ if($result->num_rows === 1){
     $usuario = $result->fetch_assoc();
 
     if($senha == $usuario['senha']) {
+        $_SESSION['usuario'] = $user;
         header("Location: menu_cliente.php"); 
         exit;
     }
@@ -41,6 +42,7 @@ else{
         </script>
                 ";
 }
+
 $statement->close();
 $conexao->close();
 ?>

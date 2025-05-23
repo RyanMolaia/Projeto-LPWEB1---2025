@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +25,12 @@
                 <a href="loja.php"><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <div class="meio">
-                <h3>Menu</h3>
+                <?php
+                    echo "<h3>Bem vindo ".$_SESSION['usuario']."</h3>"
+                ?>
             </div>
             <div class="direita">
+                <a href="logout.php">🚪 Sair</a>
                 <a href="carrinho.php">🛒</a>
             </div>
     </header>
