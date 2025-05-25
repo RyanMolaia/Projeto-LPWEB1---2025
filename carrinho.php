@@ -1,4 +1,5 @@
 <?php include("banco.php"); ?>
+<?php session_start();      ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +24,23 @@
     </header>
     <div class="geral-cart">
         <div class="container-product">
+            <?php 
+            foreach($_SESSION["produtos_exibidos"] as $id_produto){
+                $statement = $conexao->prepare("SELECT * from produtos WHERE id = ?");
+                $statement->bind_param("i",$_SESSION["produtos_exibidos"][$i]);
+                $statement->execute();
+                $result = $statement->get_result();
+                $produto = $result->fetch_assoc();
+
+                echo    "
+                        <div class='produto'>
+                            <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
+                            <h3>{$produto['nome']}</h3>
+                            <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
+                        </div>
+                        ";
+            }
+            ?>
         </div>
 
         <div class="container-resume">

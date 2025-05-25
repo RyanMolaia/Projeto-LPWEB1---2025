@@ -50,6 +50,10 @@
 
             include("banco.php"); 
 
+            if(!isset($_SESSION['produtos_exibidos'])) {
+                $_SESSION['produtos_exibidos'] = [];
+            }
+
             $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
 
             $sql = "SELECT * FROM produtos WHERE qtd_estoque > 0";
@@ -62,12 +66,19 @@
 
             if($resultado->num_rows > 0){
                 while($produto = $resultado->fetch_assoc()){
+
+                    if(!in_array($produto['id'], $_SESSION['produtos_exibidos'])){
+                        $_SESSION['produtos_exibidos'][] = $produto['id'];
+                    }
                     echo "<div class='produto'>
                             <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
                             <h3>{$produto['nome']}</h3>
                             <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
                             <div class='botoes'>
-                                <button>Adicionar ao Carrinho</button>
+                                <form action='carrinho.php' method='POST'>
+                                    <input type='hidden' name='id' value='{$produto['id']}'>
+                                    <button>Adicionar ao Carrinho</button>
+                                </form>
                             </div>
                         </div>";
                 }
