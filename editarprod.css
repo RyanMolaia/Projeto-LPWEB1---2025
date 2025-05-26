@@ -1,0 +1,165 @@
+body {
+    background-color: #a3afb8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tudo{
+    background-color: black;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    min-height: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    width: 100%;
+    justify-content: center; 
+    gap: 10px;
+    border-bottom: 1px solid #a3afb8;
+    position: relative;
+}
+
+.title img {
+    width: 80px;
+    height: auto;
+    position: absolute;
+    left: 0; 
+    top: 0;
+}
+
+.title h2{
+    font-size: 22px;
+    margin-bottom: 0px;
+}
+
+.editar{
+    width: 80%;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container a{
+    color: #ffffff;
+    display: flex;   
+    justify-content: center;
+    text-align: right;
+    font-size: 12px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.button-container button{
+    width: 30%;
+    padding: 10px;
+    background-color: #8e9499;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-container button:hover{
+    background-color: #414547;
+}
+
+
+.btn-voltar{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    padding: 10px;
+    background-color: #8e9499;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.btn-voltar:hover {
+    background-color: #414547;
+}
+
+
+.anexarimagem input[type="file"] {
+    width: 95%;
+    padding: 6px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: black;
+}
+
+.anexarimagem label{
+    font-size: 12px;
+}
+
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: black;
+}
+
+.campo_id{
+    width: 50px;
+}
+
+.tp_input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.meio_input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.cat{
+    width: 200px;
+    margin-top: 10px;
+}
+
+.campo_estoque{
+    width: 50px;
+}
+
+.final_input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}

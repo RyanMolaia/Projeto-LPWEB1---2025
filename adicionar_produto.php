@@ -17,7 +17,7 @@
             <form  action="adicionar_produto_salvar.php" method="post" enctype="multipart/form-data">
                 <div class="input-group">
                     <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                    <input type="number" id="preco" name="preco" placeholder="Preço" required>
+                    <input type="number" id="preco" name="preco" step="0.01" placeholder="Preço" required>
                     <select id="categoria" name="categoria" required>
                         <option class="cat" value="">Selecione a Categoria</option>
                             <?php

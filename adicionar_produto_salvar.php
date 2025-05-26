@@ -3,7 +3,7 @@
     include("banco.php");
 
     $nome = @$_POST['nome'];
-    $preco = @$_POST['preco'];
+    $preco = str_replace(',','.',@$_POST['preco']);
     $categoria = @$_POST['categoria'];
     $qtd_estoque = @$_POST['qtd_estoque'];
 
@@ -17,7 +17,7 @@
     if($nome == ''){
         echo "Nome é obrigatório";
     }
-    if($preco == ''){
+    if($preco == '' && $preço < 0){
         echo "Preço é obrigatório";
     }
     if($categoria == ''){
