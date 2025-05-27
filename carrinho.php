@@ -18,7 +18,11 @@
                 <h2> Meu carrinho </h2>
             </div>
             <div class="right">
-                <a href="tela_login.php">👤 Conta</a>
+                <?php if(isset($_SESSION['usuario'])): ?>
+                    <a href="menu_cliente.php">👤 Conta</a>
+                <?php else: ?>
+                    <a href="tela_login.php">👤 Conta</a>
+                <?php endif; ?>
             </div>
         </div>
     </header>
@@ -82,19 +86,22 @@
         <div class="container-resume">
             <h3>Resumo</h3>
             <?php
-                foreach ($produtosCarrinho as $produto) {
-                echo "<li>R$ " . number_format($produto['preco'], 2, ',', '.') . "</li>";
+                if(isset($total) && isset($produtosCarrinho)){
+                    foreach ($produtosCarrinho as $produto) {
+                    echo "<li>R$ " . number_format($produto['preco'], 2, ',', '.') . "</li>";
+                    }
+                    echo "</ul>";
+
+                    echo "<h3>Total: R$ " . number_format($total, 2, ',', '.') . "</h3>";
+                    echo "  <form action='#' class='finalizar-compra'> 
+                            <button>Finalizar Compra</button>
+                            </form>
+                        ";
+                }else {
+                    echo "";
                 }
 
-                echo "</ul>";
-
-                echo "<h3>Total: R$ " . number_format($total, 2, ',', '.') . "</h3>";
-            
-
             ?>
-            <form action="#" class="finalizar-compra"> 
-                <button>Finalizar Compra</button>
-            </form>
         </div>
     </div>
 </body>
