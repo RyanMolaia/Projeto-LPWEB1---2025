@@ -1,5 +1,6 @@
 <?php
 
+    session_start();
     include("banco.php");
 
     $id = @$_GET['id'];
@@ -8,6 +9,47 @@
 
     $resultado = $conexao->query($sql);
     $dados = mysqli_fetch_assoc($resultado);
+
+    $nome = isset($_POST['nome']) ? trim($_POST['nome']) : '';
+    $preco = isset($_POST['preco']) ? trim($_POST['preco']) : '';
+    $categoria = isset($_POST['categoria']) ? trim($_POST['categoria']) : '';
+    $qtd_estoque = isset($_POST['qtd_estoque']) ? trim($_POST['qtd_estoque']) : '';
+    $imagem = isset($_POST['imagem']);
+
+    $erros = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(empty($nome)){
+        $erros[] = "Nome é obrigatório";
+    }
+
+    if(empty($preco)){
+        $erros[] = "Preço é obrigatório";
+    }elseif(!is_numeric($preco) || $preco <= 0){
+        $erros[] = "Preço inválido. Digite um valor maior que 0.";
+    }
+
+    if(empty($categoria)){
+        $erros[] = "Categoria é obrigatória";
+    }
+    if(!filter_var($qtd_estoque, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])){
+        $erros[] = "Quantidade em estoque deve ser um número inteiro maior que zero.";
+    }
+
+    if(count($erros) == 0){
+        $update = "UPDATE produtos
+                    SET categorias_id='$categoria',
+                        nome='$nome',
+                        preco='$preco',
+                        qtd_estoque='$qtd_estoque'
+                    WHERE id='$id'";
+        $conexao->query($update);
+        $_SESSION['sucesso'] = "Produto atualizado com sucesso!";
+        header("location: produtos.php");
+        exit;
+
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +68,17 @@
                 </div>
                 <h2>Edição de Produto</h2>
         </div>
+        <?php if (!empty($erros)): ?>
+            <div class="alerta-erros">
+                <ul>
+                    <?php foreach ($erros as $erro): ?>
+                        <li><?php echo htmlspecialchars($erro); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <div class="editar">
-            <form action="editar_produto_salvar.php" method="POST" >
+            <form action="?id=<?php echo $dados['id']; ?>" method="POST" enctype="multipart/form-data" >
                 <div class="input-group">
                     
                     <div class="tp_input">
@@ -46,7 +97,6 @@
                             <select id="categoria" name="categoria" required>
                                 <option  value="">Selecione a Categoria</option>
                                     <?php
-                                        include("banco.php");
                                         $sql = "SELECT id, nome FROM categorias";
 
                                         $resultado = $conexao->query($sql);
@@ -59,7 +109,7 @@
                             </select>
                         </div>
                         <label>Quantidade em Estoque</label>
-                        <input class="campo_estoque" type="text" name="qtd_estoque" value="<?php echo $dados["qtd_estoque"]; ?>" />
+                        <input class="campo_estoque" type="number" name="qtd_estoque" value="<?php echo $dados["qtd_estoque"]; ?>" />
                     </div>
                     <div class="final_input">
                         <div class="imagem-atual">
@@ -80,5 +130,14 @@
                 </form>
         </div>
     </div>
+<script>
+    setTimeout(function() {
+        var alerta = document.querySelector('.alerta-erros');
+        if(alerta) {
+            alerta.remove();
+        }
+    }, 5000);
+</script>
+
 </body>
 </html>

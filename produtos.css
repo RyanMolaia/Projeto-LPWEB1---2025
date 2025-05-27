@@ -150,6 +150,15 @@ body {
     cursor: pointer;
 }
 
+.busca form .cat{
+    width: 30%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: black;
+}
+
 .adicionarproduto{
     padding: 8px 12px;
     background-color: #2546fd;
@@ -202,3 +211,46 @@ body {
     cursor: pointer;
     text-decoration: none;
 }
+
+.alerta {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    min-width: 250px;
+    max-width: 400px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    z-index: 9999;
+    background-color: #4CAF50;
+    color: white;
+    opacity: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(100%);
+    animation: slideIn 0.5s forwards, fadeOut 5s ease-out forwards;
+    transition: opacity 1s ease;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+

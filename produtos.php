@@ -1,3 +1,14 @@
+<?php
+
+include("banco.php");
+session_start();
+
+$mensagem_sucesso = '';
+if (isset($_SESSION['sucesso'])) {
+    $mensagem_sucesso = $_SESSION['sucesso'];
+    unset($_SESSION['sucesso']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +18,16 @@
     <link rel="stylesheet" href="produtos.css">
 </head>
 <body>
+        <?php if (!empty($mensagem_sucesso)): ?>
+            <div class="alerta alerta-sucesso" id="mensagem-sucesso">
+                ✅ <?php echo htmlspecialchars($mensagem_sucesso); ?>
+            </div>
+        <?php endif; ?>
     <header>
         <div class="topo">
             <div class="esquerda">
                 <a href="#sidebar" id="btn-departamento">☰</a>
-                <a href="loja.php"><img class="logo" src="img/logo.png" alt=""></a>
+                <a href="menu_administrativo.php"><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <div class="meio">
                 <h3>Produtos StoreComp</h>
@@ -23,8 +39,8 @@
             <aside id="sidebar">
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
-                        <li><a href="monitores.php">Cadastro de Usuários</a></li>
-                        <li><a href="notebooks.php">Relatórios</a></li>
+                        <li><a href="cadastro_usuarios_adm.php">Cadastro de Usuários</a></li>
+                        <li><a href="relatorios.php">Relatórios</a></li>
                     </ul>
             <div class="voltar">
                 <a href="">Voltar</a>
@@ -39,6 +55,18 @@
                 <form action="produtos.php" method="POST">
                     <input type="text" name="buscar" placeholder="Buscar">
                     <button class="pesquisa">🔍</button>
+                    <div class="cat">
+                        <select name="categoria">
+                            <option value="">Todas as Categorias</option>
+                            <?php
+                            $cats = $conexao->query("SELECT id, nome FROM categorias");
+                            foreach ($cats as $cat) {
+                                $selected = (isset($_POST['categoria']) && $_POST['categoria'] == $cat['id']) ? 'selected' : '';
+                                echo "<option value='{$cat['id']}' $selected>{$cat['nome']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
                 </form>
                     <a href="adicionar_produto.php"><button class="adicionarproduto">Adicionar Produto</button></a>
             </div>
@@ -55,14 +83,17 @@
                 </thead>
             <?php
 
-                include ("banco.php");
-
                 $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
+                $categoria = isset($_POST['categoria']) ? trim($_POST['categoria']) : '';
 
                 $sql = "SELECT * FROM produtos";
 
                 if(!empty($busca)){
                 $sql .= " WHERE LOWER(nome) LIKE LOWER('%$busca%')";
+                }
+
+                if(!empty($categoria)){
+                    $sql .= "";
                 }
                 
                 $retorno = $conexao->query($sql);
