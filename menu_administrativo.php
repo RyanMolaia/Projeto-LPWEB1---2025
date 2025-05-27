@@ -20,6 +20,7 @@
             </div>
             <div class="direita">
                 <a href="tela_login.php">👤 Conta</a>
+                <a href="logout.php">🚪 Sair</a>
             </div>
     </header>
             <aside id="sidebar">
