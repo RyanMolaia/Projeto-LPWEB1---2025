@@ -1,6 +1,6 @@
 <?php
-session_start();
-session_destroy();
-header('Location: tela_login.php');
-exit();
+    session_start();
+    session_destroy();
+    header('Location: loja.php');
+    exit();
 ?>
