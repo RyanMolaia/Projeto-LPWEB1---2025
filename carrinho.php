@@ -1,5 +1,5 @@
-<?php include("banco.php"); ?>
 <?php session_start();      ?>
+<?php include("banco.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,29 +24,77 @@
     </header>
     <div class="geral-cart">
         <div class="container-product">
-            <?php 
-            foreach($_SESSION["produtos_exibidos"] as $id_produto){
-                $statement = $conexao->prepare("SELECT * from produtos WHERE id = ?");
-                $statement->bind_param("i",$_SESSION["produtos_exibidos"][$i]);
-                $statement->execute();
-                $result = $statement->get_result();
-                $produto = $result->fetch_assoc();
+            <?php
+                $id = $_POST['id'] ?? null;
 
-                echo    "
-                        <div class='produto'>
-                            <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
-                            <h3>{$produto['nome']}</h3>
-                            <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
-                        </div>
-                        ";
+                if(!isset($_SESSION['carrinho'])) {
+                    $_SESSION['carrinho'] = [];
+                }
+                if(isset($_POST['id'])) {
+                    $id = (int) $_POST['id'];
+                    if(!in_array($id, $_SESSION['carrinho'])) {
+                        $_SESSION['carrinho'][] = $id;
+                    }
+                }
+               
+
+
+                if(count($_SESSION['carrinho']) == 0) {
+                    echo "<p>Seu carrinho está vazio.</p>";
+                } else {
+    
+                if (isset($_GET['remover'])) {
+                $id_remover = (int) $_GET['remover'];
+                if (($key = array_search($id_remover, $_SESSION['carrinho'])) !== false) {
+                    unset($_SESSION['carrinho'][$key]);
+                    $_SESSION['carrinho'] = array_values($_SESSION['carrinho']); // Reorganiza os índices
+                }
+                }
+                $produtosCarrinho = [];
+                $total = 0;
+                $statement = $conexao->prepare("SELECT * from produtos WHERE id = ?");
+                foreach($_SESSION['carrinho'] as $ids){
+                                        $statement->bind_param("i",$ids);
+                    $statement->execute();
+                    $result = $statement->get_result();
+                    $produto = $result->fetch_assoc();
+                if($produto) {
+                    echo    "
+                            <div class='produto'>
+                                <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
+                                <h3>{$produto['nome']}</h3>
+                                <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
+                                <a href='carrinho.php?remover={$produto['id']}' class='botao-remover'>🗑️</a>
+                            </div>
+                            ";
+                    $produtosCarrinho[] = $produto;
+                    $total += $produto['preco'];
+                } else {
+                    echo "<p>Produto não encontrado.</p>";
+                }
+                 
+                }
+                $statement->close();
             }
-            ?>
+        ?>
         </div>
 
         <div class="container-resume">
             <h3>Resumo</h3>
+            <?php
+                foreach ($produtosCarrinho as $produto) {
+                echo "<li>R$ " . number_format($produto['preco'], 2, ',', '.') . "</li>";
+                }
+
+                echo "</ul>";
+
+                echo "<h3>Total: R$ " . number_format($total, 2, ',', '.') . "</h3>";
             
 
+            ?>
+            <form action="#" class="finalizar-compra"> 
+                <button>Finalizar Compra</button>
+            </form>
         </div>
     </div>
 </body>

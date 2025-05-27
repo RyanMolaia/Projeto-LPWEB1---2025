@@ -13,8 +13,8 @@ if($conexao->connect_error){
 
 $statement = $conexao->prepare("SELECT senha from usuarios WHERE usuario = ?"); //ele vai preparar
 $statement->bind_param("s",$user); //joga o valor $username no lugar do ?
-$statement->execute(); //esta eniando o valor 
-$result = $statement->get_result(); // pea o resultado
+$statement->execute(); //esta enviando o valor
+$result = $statement->get_result(); // pega o resultado
 
 
 if($result->num_rows === 1){

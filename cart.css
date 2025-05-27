@@ -62,6 +62,42 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     min-height: 500px;
 }
+
+.logo {
+    width: 100px;
+    height: auto;   
+    margin-left: 10px;
+}
+.produto {
+    padding: 2px;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    justify-content: space-between;
+}
+.produto img {
+    height: 100px;
+    width: auto;
+}
+.produto h3 {
+    width: 1000px;
+}
+.produto a {
+    text-decoration: none;
+}
+p {
+    color: #ffffff;
+    text-align: center;
+    align-items: center;
+}
+.preco {
+    padding-right: 10px;
+    display: inline;
+    align-items: right;
+    margin-right: 4px;
+    width: 10%;
+}
+
 .container-resume{
     height: auto;
     width: 480px;
@@ -79,9 +115,18 @@ body {
     border-bottom: 1px solid #FFFF;
     margin-bottom: 50px;
 }
-
-.logo {
-    width: 100px;
-    height: auto;   
-    margin-left: 10px;
+.container-resume form {
+}
+.container-resume button {
+    width: 100%;
+    padding: 12px;
+    background-color: green;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: large;
+}
+.container-resume button:hover {
+    background-color: greenyellow;
 }
