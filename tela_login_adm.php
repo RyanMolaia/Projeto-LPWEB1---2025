@@ -23,7 +23,7 @@
             </div>
         </div>
 
-            <form action="#" method="post">
+            <form action="validar_usuario_adm.php" method="post">
                 <div class="input-group">
                     <input type="text" id="usuario" name="usuario" placeholder="👤 Usuário" required>
                     <input type="password" id="senha" name="senha" placeholder="🔑 Senha" required>
