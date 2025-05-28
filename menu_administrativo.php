@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conta Adminitrativa</title>
-    <link rel="stylesheet" href="suporte.css">
+    <link rel="stylesheet" href="menu_adm.css">
 </head>
 <body>
     <header>
@@ -20,7 +20,7 @@
             </div>
             <div class="direita">
                 <a href="">👤 Conta</a>
-                <a href="logout.php">🚪 Sair</a>
+                <a href="logout_adm.php">🚪 Sair</a>
             </div>
     </header>
             <aside id="sidebar">
@@ -28,7 +28,7 @@
                     <ul>
                         <li><a href="produtos.php">Produtos</a></li>
                         <li><a href="categorias.php">Categorias</a></li>
-                        <li><a href="funcionarios.php">Funcionário</a></li>
+                        <li><a href="funcionarios.php">Funcionario</a></li>
                         <li><a href="relatorios.php">Relatórios de Vendas</a></li>
                     </ul>
             <div class="suporte">
