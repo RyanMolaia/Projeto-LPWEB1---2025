@@ -1,3 +1,68 @@
+<?php
+
+    include("banco.php");
+    session_start();
+
+    $erros = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = trim($_POST['nome'] ?? '');
+    $preco = str_replace(',', '.', $_POST['preco'] ?? '');
+    $categoria = $_POST['categoria'] ?? '';
+    $qtd_estoque = $_POST['qtd_estoque'] ?? '';
+    $imagem = $_FILES['imagem'] ?? null;
+
+    if (empty($nome)) {
+        $erros[] = "Nome é obrigatório";
+    }
+
+    if (empty($preco)) {
+        $erros[] = "Preço é obrigatório";
+    } elseif (!is_numeric($preco) || $preco <= 0) {
+        $erros[] = "Preço inválido. Digite um valor maior que 0.";
+    }
+
+    if (empty($categoria)) {
+        $erros[] = "Categoria é obrigatória";
+    }
+
+    if (!filter_var($qtd_estoque, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])) {
+        $erros[] = "Quantidade em estoque deve ser um número inteiro maior que zero.";
+    }
+
+    if (!$imagem || $imagem['error'] !== 0) {
+        $erros[] = "Imagem é obrigatória.";
+    }
+
+
+    if (count($erros) === 0) {
+        $nomeimagem = $imagem['name'];
+        $caminhotemp = $imagem['tmp_name'];
+        $pastadestino = "img/";
+        $caminhodestino = $pastadestino . basename($nomeimagem);
+
+        if (move_uploaded_file($caminhotemp, $caminhodestino)) {
+            $sql = "INSERT INTO produtos (nome, preco, categorias_id, imagem, qtd_estoque) 
+                    VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bind_param("sdssi", $nome, $preco, $categoria, $caminhodestino, $qtd_estoque);
+
+            if ($stmt->execute()) {
+                $_SESSION['sucesso'] = "Produto cadastrado com sucesso!";
+                header("Location: produtos.php");
+                exit;
+            } else {
+                $erros[] = "❌ Ocorreu um erro ao cadastrar o produto.";
+            }
+
+            $stmt->close();
+        } else {
+            $erros[] = "❌ Erro ao enviar a imagem.";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +79,16 @@
             </div>
             <h2>Cadastro de Produto</h2>
         </div>
-            <form  action="adicionar_produto_salvar.php" method="post" enctype="multipart/form-data">
+        <?php if (!empty($erros)): ?>
+        <div class="alerta alerta-erro">
+            <ul>
+                <?php foreach ($erros as $erro): ?>
+                    <li><?= htmlspecialchars($erro) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php endif; ?>
+            <form  action="adicionar_produto.php" method="post" enctype="multipart/form-data">
                 <div class="input-group">
                     <input type="text" id="nome" name="nome" placeholder="Nome" required>
                     <input type="number" id="preco" name="preco" step="0.01" placeholder="Preço" required>
@@ -43,5 +117,12 @@
                 </div>
             </form>
     </div>
+    <script>
+        setTimeout(function () {
+            let alertas = document.querySelectorAll('.alerta');
+            alertas.forEach(alerta => alerta.style.display = 'none');
+        }, 5000);
+    </script>
+
 </body>
 </html>

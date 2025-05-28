@@ -27,8 +27,9 @@
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
                         <li><a href="produtos.php">Produtos</a></li>
-                        <li><a href="monitores.php">Cadastro de Funcionário</a></li>
-                        <li><a href="notebooks.php">Relatórios</a></li>
+                        <li><a href="categorias.php">Categorias</a></li>
+                        <li><a href="cadastro_func.php">Cadastro de Funcionário</a></li>
+                        <li><a href="relatorios.php">Relatórios de Vendas</a></li>
                     </ul>
             <div class="suporte">
                 <a href="suporte.php">Suporte</a>

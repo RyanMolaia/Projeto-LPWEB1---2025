@@ -13,8 +13,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px;
-    min-height: 400px;
+    max-width: 600px;
+    min-height: 300px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -49,6 +49,7 @@ body {
 
 .input-group {
     width: 100%;
+    margin-top: 100px;
 }
 
 .input-group input{
@@ -71,7 +72,7 @@ body {
     justify-content: center; 
     gap: 10px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .button-container button{
@@ -109,59 +110,12 @@ body {
     background-color: #414547;
 }
 
-
-.anexarimagem input[type="file"] {
-    width: 95%;
-    padding: 6px;
-    border-radius: 5px;
-    background-color: #fff;
-    color: black;
-}
-
-.anexarimagem label{
-    font-size: 12px;
-}
-
-.input-group select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: white;
-    color: black;
-}
-
-.campo_id{
-    width: 50px;
-}
-
 .tp_input{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
-}
-.meio_input{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-}
-.cat{
-    width: 200px;
-    margin-top: 10px;
-}
-
-.campo_estoque{
-    width: 50px;
-}
-
-.final_input{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
+    gap: 10px;
 }
 
 .alerta-erros {

@@ -57,7 +57,7 @@ if (isset($_SESSION['sucesso'])) {
                     <button class="pesquisa">🔍</button>
                     <div class="cat">
                         <select name="categoria">
-                            <option value="">Todas as Categorias</option>
+                            <option value="">Categorias</option>
                             <?php
                             $cats = $conexao->query("SELECT id, nome FROM categorias");
                             foreach ($cats as $cat) {
@@ -86,14 +86,16 @@ if (isset($_SESSION['sucesso'])) {
                 $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
                 $categoria = isset($_POST['categoria']) ? trim($_POST['categoria']) : '';
 
-                $sql = "SELECT * FROM produtos";
+                $sql = "SELECT produtos.*, categorias.nome AS nome_categoria FROM produtos 
+                        LEFT JOIN categorias ON produtos.categorias_id = categorias.id";
+
 
                 if(!empty($busca)){
-                $sql .= " WHERE LOWER(nome) LIKE LOWER('%$busca%')";
+                $sql .= " WHERE LOWER(produtos.nome) LIKE LOWER('%$busca%')";
                 }
 
                 if(!empty($categoria)){
-                    $sql .= "";
+                    $sql .= " WHERE categorias_id LIKE '%$categoria%'";
                 }
                 
                 $retorno = $conexao->query($sql);
@@ -102,7 +104,7 @@ if (isset($_SESSION['sucesso'])) {
                         <td>" . $linha['id'] . "</td>
                         <td>" . $linha['nome'] . "</td>
                         <td>" . $linha['preco'] . "</td>
-                        <td>" . $linha['categorias_id'] . "</td>
+                        <td>" . $linha['nome_categoria'] . "</td>
                         <td>" . $linha['qtd_estoque'] . "</td>
                         <td class='linhas'>
                             <a href='editar_produto.php?id=". $linha['id']."' class='editar'>✏️</a>
