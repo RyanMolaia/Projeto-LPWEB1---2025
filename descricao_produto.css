@@ -127,7 +127,7 @@ body {
 }
 
 .produto img{
-    width: 100%;
+    width: 20%;
     height: 150px;
     margin-bottom: 10px;
 }
@@ -136,6 +136,11 @@ body {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
+}
+.produto {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .produto h3{
