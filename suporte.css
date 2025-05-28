@@ -1,106 +1,145 @@
 body {
-    background-color: #a3afb8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;    
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #a3afb8;
 }
 
-.login-container{
+.topo{
     background-color: black;
-    padding: 30px 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    min-height: 350px;
     color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.title{
-    display: flex;
-    width: 100%;
-    justify-content: center; 
-    gap: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #a3afb8;
-    position: relative;
-}
-
-.title img {
-    width: 80px;
-    height: auto;
-    position: absolute;
-    left: 0; 
-    top: 0;
-}
-
-.title h2{
-    font-size: 22px;
-    margin-bottom: 0px;
-}
-
-.input-group {
-    width: 100%;
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
-
-.input-group input{
-    width: 95%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.login-container a{
-    color: #ffffff;
-    display: flex;   
-    justify-content: center;
-    text-align: right;
-    font-size: 12px;
-}
-
-.button-container {
+    padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: center; 
-    gap: 10px;
-    width: 100%;
+    justify-content: space-between;
 }
 
-.button-container button{
-    width: 50%;
-    padding: 10px;
-    background-color: #8e9499;
+#btn-departamento{
+    background: white;
+    color: black;
     border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button-container button:hover{
-    background-color: #414547;
-}
-
-.btn-voltar{
-    width: 20%;
-    padding: 11px;
-    background-color: #8e9499;
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
 }
 
-.btn-voltar:hover {
-    background-color: #414547;
+.esquerda {
+    display: flex;
+    align-items: center;
 }
+
+.esquerda .logo {
+    margin-left: 10px;
+}
+
+.meio {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.meio form{
+    display: flex;
+    align-items: center;
+}
+
+.meio form input{
+    padding:8px;
+    width: 300px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.meio form button{
+    padding: 8px 12px;
+    border: none;
+    background-color: #ffffff;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.direita{
+    min-width: 100px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.direita a{
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.direita a:hover{
+    text-decoration: none;
+}
+
+.logo{
+    width: 100px;
+    height: auto;   
+    margin-left: 10px;
+}
+
+#fechar-sidebar{
+    color: white;
+    border: none;
+    font-size: 20px;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+#sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    transform: translateX(-250px);
+    color: white;
+    width: 200px;
+    height: 100%;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+#sidebar:target{
+    transform: translateX(0);
+}
+
+.voltar{
+    padding-top: 20px;
+    border-top: 1px solid white;
+}
+
+.voltar a{
+    color: white;
+    text-decoration: none;
+}
+.suporte{
+    padding-top: 20px;
+}
+
+.suporte a{
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar ul{
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar ul li{
+    margin: 20px 0;
+}
+
+#sidebar ul li a{
+    color: white;
+    text-decoration: none;
+}
+

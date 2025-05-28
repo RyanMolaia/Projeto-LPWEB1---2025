@@ -55,8 +55,6 @@ session_start();
                         <th>ID Venda</th>
                         <th>Data da Venda</th>
                         <th>Cliente</th>
-                        <th>Endereço Entrega</th>
-                        <th>Forma de Pagamento</th>
                         <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Preço Unitário</th>
@@ -71,8 +69,6 @@ session_start();
                 $sql = "SELECT 
                             v.id AS vendas_id,
                             v.data_venda,
-                            v.endereco_entrega,
-                            v.metodo_pagamento,
                             u.usuario AS cliente,
                             p.nome AS produto,
                             vi.quantidade,
@@ -81,8 +77,8 @@ session_start();
                         FROM vendas v
                         JOIN usuarios u ON v.id_usuario = u.id
                         JOIN vendas_itens vi ON v.id = vi.vendas_id
-                        JOIN produtos p ON vi.produtos_id = p.id";
-
+                        JOIN produtos p ON vi.produtos_id = p.id
+                        ";
 
                 if(!empty($busca)){
                 $sql .= " WHERE LOWER(p.nome) LIKE LOWER('%$busca%') OR LOWER(u.usuario) LIKE LOWER('%$busca%')";
@@ -96,8 +92,6 @@ session_start();
                             <td>" . $linha['vendas_id'] . "</td>
                             <td>" . $linha['data_venda'] . "</td>
                             <td>" . $linha['cliente'] . "</td>
-                            <td>" . $linha['endereco_entrega'] . "</td>
-                            <td>" . $linha['metodo_pagamento'] . "</td>
                             <td>" . $linha['produto'] . "</td>
                             <td>" . $linha['quantidade'] . "</td>
                             <td>" . $linha['preco_unitario'] . "</td>
