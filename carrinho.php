@@ -125,7 +125,7 @@
                     echo "</ul>";
 
                     echo "<h3>Total: R$ " . number_format($total, 2, ',', '.') . "</h3>";
-                    echo "  <form action='tela_finalizar_compra.php' class='finalizar-compra'> 
+                    echo "  <form action='metodo_pagamento.php' class='finalizar-compra'> 
                             <button>Finalizar Compra</button>
                             </form>
                         ";
