@@ -3,26 +3,16 @@
 include("banco.php");
 session_start();
 
-$mensagem_sucesso = '';
-if (isset($_SESSION['sucesso'])) {
-    $mensagem_sucesso = $_SESSION['sucesso'];
-    unset($_SESSION['sucesso']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Produtos</title>
+    <title>Gestão de Vendas</title>
     <link rel="stylesheet" href="produtos.css">
 </head>
 <body>
-        <?php if (!empty($mensagem_sucesso)): ?>
-            <div class="alerta alerta-sucesso" id="mensagem-sucesso">
-                ✅ <?php echo htmlspecialchars($mensagem_sucesso); ?>
-            </div>
-        <?php endif; ?>
     <header>
         <div class="topo">
             <div class="esquerda">
@@ -30,7 +20,7 @@ if (isset($_SESSION['sucesso'])) {
                 <a href="menu_administrativo.php"><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <div class="meio">
-                <h3>Categorias StoreComp</h>
+                <h3>Vendas StoreComp</h>
         </div>
             <div class="direita">
                 <a href="menu_administrativo.php">👤 Conta</a>
@@ -41,8 +31,8 @@ if (isset($_SESSION['sucesso'])) {
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
                         <li><a href="produtos.php">Produtos</a></li>
-                        <li><a href="funcionários.php">Funcionários</a></li>
-                        <li><a href="relatorios.php">Relatórios</a></li>
+                        <li><a href="categorias.php">Produtos</a></li>
+                        <li><a href="funcionarios.php">Funcionários</a></li>
                     </ul>
             <div class="voltar">
                 <a href="menu_administrativo.php">Voltar</a>
@@ -54,18 +44,21 @@ if (isset($_SESSION['sucesso'])) {
     </header
         <main class="tabela-main">
             <div class="busca">
-                <form action="categorias.php" method="POST">
+                <form action="relatorios.php" method="POST">
                     <input type="text" name="buscar" placeholder="Buscar">
                     <button class="pesquisa">🔍</button>
                 </form>
-                    <a href="adicionar_categorias.php"><button class="adicionarproduto">Adicionar Categoria</button></a>
             </div>
             <table class="tabela">
                 <thead>
                     <tr class="cabecalho">
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Ações</th>
+                        <th>ID Venda</th>
+                        <th>Data da Venda</th>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Total Item</th>
                     </tr>
                 </thead>
             <?php
@@ -73,22 +66,37 @@ if (isset($_SESSION['sucesso'])) {
                 $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
                 $categoria = isset($_POST['categoria']) ? trim($_POST['categoria']) : '';
 
-                $sql = "SELECT * FROM categorias";
+                $sql = "SELECT 
+                            v.id AS vendas_id,
+                            v.data_venda,
+                            u.usuario AS cliente,
+                            p.nome AS produto,
+                            vi.quantidade,
+                            vi.preco_unitario,
+                            (vi.quantidade * vi.preco_unitario) AS total_item
+                        FROM vendas v
+                        JOIN usuarios u ON v.id_usuario = u.id
+                        JOIN vendas_itens vi ON v.id = vi.vendas_id
+                        JOIN produtos p ON vi.produtos_id = p.id
+                        ";
 
                 if(!empty($busca)){
-                $sql .= " WHERE LOWER(nome) LIKE LOWER('%$busca%')";
+                $sql .= " WHERE LOWER(p.nome) LIKE LOWER('%$busca%') OR LOWER(u.usuario) LIKE LOWER('%$busca%')";
                 }
+
+                $sql .= " ORDER BY v.data_venda DESC, v.id";
                 
                 $retorno = $conexao->query($sql);
                 foreach($retorno as $linha){
                     echo "<tr>
-                        <td>" . $linha['id'] . "</td>
-                        <td>" . $linha['nome'] . "</td>
-                        <td class='linhas'>
-                            <a href='editar_categorias.php?id=". $linha['id']."' class='editar'>✏️</a>
-                            <a href='deletar_categorias.php?id=". $linha['id'] ."' class='excluir' onclick=\"return confirm('Tem certeza?')\">🗑️</a>
-                    </td>
-                    </tr>";
+                            <td>" . $linha['vendas_id'] . "</td>
+                            <td>" . $linha['data_venda'] . "</td>
+                            <td>" . $linha['cliente'] . "</td>
+                            <td>" . $linha['produto'] . "</td>
+                            <td>" . $linha['quantidade'] . "</td>
+                            <td>" . $linha['preco_unitario'] . "</td>
+                            <td>" . $linha['total_item'] . "</td>
+                        </tr>";
                 }
                 ?>
                 </div>

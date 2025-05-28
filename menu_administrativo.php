@@ -19,7 +19,7 @@
                 <h3>Menu Administrativo</h3>
             </div>
             <div class="direita">
-                <a href="tela_login.php">👤 Conta</a>
+                <a href="">👤 Conta</a>
                 <a href="logout.php">🚪 Sair</a>
             </div>
     </header>
@@ -28,7 +28,7 @@
                     <ul>
                         <li><a href="produtos.php">Produtos</a></li>
                         <li><a href="categorias.php">Categorias</a></li>
-                        <li><a href="cadastro_func.php">Cadastro de Funcionário</a></li>
+                        <li><a href="funcionarios.php">Funcionário</a></li>
                         <li><a href="relatorios.php">Relatórios de Vendas</a></li>
                     </ul>
             <div class="suporte">

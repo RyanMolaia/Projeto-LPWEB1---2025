@@ -11,7 +11,7 @@
         die ("falha na conexão : ".$conexao->connect_error ); //encerra imediatamente e mostra a mensagem antes
     }
 
-    $statement = $conexao->prepare("SELECT senha_adm from usuarios_adm WHERE usuario_adm = ?"); //ele vai preparar
+    $statement = $conexao->prepare("SELECT * from usuarios WHERE usuario = ? AND adm = '1'"); //ele vai preparar
     $statement->bind_param("s",$user); //joga o valor $username no lugar do ?
     $statement->execute(); //esta enviando o valor
     $result = $statement->get_result(); // pega o resultado
@@ -20,8 +20,8 @@
     if($result->num_rows === 1){
         $usuario = $result->fetch_assoc();
 
-        if($senha == $usuario['senha_adm']) {
-            $_SESSION['usuario_adm'] = $user;
+        if($senha == $usuario['senha']) {
+            $_SESSION['usuario'] = $user;
             header("Location: menu_administrativo.php"); 
             exit;
         }

@@ -7,11 +7,11 @@ $senha = $_POST['password'] ?? '';
 $senha_conf = $_POST['password_confirm'] ?? ''; 
 $email = $_POST['e-mail'] ?? '';
 $telefone = $_POST['telefone'] ?? '';
-$adm = 0;
+$adm = 1;
 
 
 
-$statement = $conexao->prepare("SELECT * from usuarios WHERE usuario = ? AND adm = '0'"); //ele vai preparar
+$statement = $conexao->prepare("SELECT * from usuarios WHERE usuario = ? AND adm = '1'"); //ele vai preparar
 $statement->bind_param("s",$user); //joga o valor $username no lugar do ?
 $statement->execute(); //esta eniando o valor 
 $result = $statement->get_result(); // pea o resultado
@@ -22,7 +22,7 @@ if($user == $usuario["usuario"]){
     echo "
         <script>
                 alert('Nome de usuario já existente');
-                window.location.href = 'tela_cadastro.php';
+                window.location.href = 'adicionar_funcionario.php';
         </script>
     ";    
 }else{
@@ -30,7 +30,7 @@ if($senha != $senha_conf){
     echo "
         <script>
                 alert('Senhas diferentes!');
-                window.location.href = 'tela_cadastro.php';
+                window.location.href = 'adicionar_funcionario.php';
         </script>
     ";
 }
@@ -42,7 +42,7 @@ else{
         echo "
             <script>
                 alert('Cadastro realizado com sucesso!');
-                window.location.href = 'tela_login.php';
+                window.location.href = 'funcionarios.php';
             </script>
         ";
 }

@@ -33,17 +33,19 @@ if (isset($_SESSION['sucesso'])) {
                 <h3>Produtos StoreComp</h>
         </div>
             <div class="direita">
-                <a href="tela_login.php">👤 Conta</a>
+                <a href="menu_administrativo.php">👤 Conta</a>
+                <a href="logout_adm.php">🚪 Sair</a>
             </div>
         </div>
             <aside id="sidebar">
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
-                        <li><a href="cadastro_usuarios_adm.php">Cadastro de Usuários</a></li>
+                        <li><a href="categorias.php">Funcionários</a></li>
+                        <li><a href="funcionarios.php">Funcionários</a></li>
                         <li><a href="relatorios.php">Relatórios</a></li>
                     </ul>
             <div class="voltar">
-                <a href="">Voltar</a>
+                <a href="menu_administrativo.php">Voltar</a>
             </div>
             <div class="suporte">
                 <a href="suporte.php">Suporte</a>
