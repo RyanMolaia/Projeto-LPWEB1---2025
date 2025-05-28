@@ -43,7 +43,7 @@
     <div class="login-container">
         <div class="title">
             <div class="img">
-                <a class="" href="loja.php"><img class="logo" src="img/logo.png" alt=""></a>
+                <a class="" href="menu_administrativo.php"><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <h2>Cadastro de Categoria</h2>
         </div>
@@ -58,7 +58,7 @@
         <?php endif; ?>
             <form  action="adicionar_categorias.php" method="post">
                 <div class="input-group">
-                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                    <input type="text" id="nome" name="nome" placeholder="Nome">
                 </div>
                 <div class="button-container">
                     <button type="submit">Cadastrar</button>
@@ -72,6 +72,5 @@
             alertas.forEach(alerta => alerta.style.display = 'none');
         }, 5000);
     </script>
-
 </body>
 </html>

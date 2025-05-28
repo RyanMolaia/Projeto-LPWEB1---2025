@@ -36,6 +36,9 @@
             <li><a href="notebooks.php">Notebooks</a></li>
             <li><a href="hardwares.php">Hardwares</a></li>
         </ul>
+        <div class="voltar">
+            <a href="loja.php">Voltar</a>
+        </div>
         <div class="suporte">
             <a href="">Suporte</a>
         </div>

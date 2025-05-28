@@ -75,7 +75,7 @@
     <div class="login-container">
         <div class="title">
             <div class="img">
-                <a class="" href="loja.php"><img class="logo" src="img/logo.png" alt=""></a>
+                <a class="" href="menu_administrativo.php"><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <h2>Cadastro de Produto</h2>
         </div>
@@ -90,9 +90,9 @@
         <?php endif; ?>
             <form  action="adicionar_produto.php" method="post" enctype="multipart/form-data">
                 <div class="input-group">
-                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                    <input type="number" id="preco" name="preco" step="0.01" placeholder="Preço" required>
-                    <select id="categoria" name="categoria" required>
+                    <input type="text" id="nome" name="nome" placeholder="Nome">
+                    <input type="number" id="preco" name="preco" step="0.01" placeholder="Preço">
+                    <select id="categoria" name="categoria">
                         <option class="cat" value="">Selecione a Categoria</option>
                             <?php
                                 include("banco.php");
@@ -107,9 +107,9 @@
                     </select>
                     <div class="anexarimagem">
                         <label for="imagem">Anexar Imagem:</label>
-                        <input type="file" id="imagem" name="imagem" accept="image/*" required>
+                        <input type="file" id="imagem" name="imagem" accept="image/*" >
                     </div>
-                    <input type="text" id="qtd_estoque" name="qtd_estoque" placeholder="Quantidade" required>
+                    <input type="text" id="qtd_estoque" name="qtd_estoque" placeholder="Quantidade" >
                 </div>
                 <div class="button-container">
                     <button type="submit">Cadastrar</button>

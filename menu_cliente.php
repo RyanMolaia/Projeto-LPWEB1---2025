@@ -37,8 +37,7 @@ if (!isset($_SESSION['id'])) {
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
                         <li><a href="carrinho.php">Carrinho</a></li>
-                        <li><a href="#">Informações pessoais</a></li>
-                        <li><a href="#">Historico de compras</a></li>
+                        <li><a href="compras_cliente.php">Historico de compras</a></li>
                     </ul>
             <div class="suporte">
                 <a href="suporte.php">Suporte</a>

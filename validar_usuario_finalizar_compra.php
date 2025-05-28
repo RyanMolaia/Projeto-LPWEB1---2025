@@ -11,7 +11,7 @@ if($conexao->connect_error){
     die ("falha na conexão : ".$conexao->connect_error ); //encerra imediatamente e mostra a mensagem antes
 }
 
-$statement = $conexao->prepare("SELECT * from usuarios WHERE usuario = ?"); //ele vai preparar
+$statement = $conexao->prepare("SELECT * from usuarios WHERE usuario = ? AND adm = '0'"); //ele vai preparar
 $statement->bind_param("s",$user); //joga o valor $username no lugar do ?
 $statement->execute(); //esta enviando o valor
 $result = $statement->get_result(); // pega o resultado
@@ -22,7 +22,7 @@ if($result->num_rows === 1){
 
     if($senha == $usuario['senha']) {
         $_SESSION['usuario'] = $usuario['usuario'];
-        $_SESSION['id'] = $usuario['id_usuario'];
+        $_SESSION['id'] = $usuario['id'];
         header("Location: tela_finalizar_compra.php"); 
         exit;
     }

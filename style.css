@@ -23,6 +23,16 @@ body {
     text-decoration: none;
 }
 
+.voltar{
+    padding-top: 20px;
+    border-top: 1px solid white;
+}
+
+.voltar a{
+    color: white;
+    text-decoration: none;
+}
+
 .meio {
     display: flex;
     flex: 1;
@@ -97,7 +107,6 @@ body {
 }
 .suporte{
     padding-top: 20px;
-    border-top: 1px solid white;
 }
 
 .suporte a{
