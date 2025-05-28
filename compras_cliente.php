@@ -54,6 +54,8 @@
                     <tr class="cabecalho">
                         <th>ID Venda</th>
                         <th>Data da Venda</th>
+                        <th>Endereço Entrega</th>
+                        <th>Método de Pagamento</th>
                         <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Preço Unitário</th>
@@ -68,6 +70,8 @@
                 $sql = "SELECT 
                             v.id AS vendas_id,
                             v.data_venda,
+                            v.endereco_entrega,
+                            v.metodo_pagamento,
                             p.nome AS produto,
                             vi.quantidade,
                             vi.preco_unitario,
@@ -90,6 +94,8 @@
                     echo "<tr>
                             <td>" . $linha['vendas_id'] . "</td>
                             <td>" . $linha['data_venda'] . "</td>
+                            <td>" . $linha['endereco_entrega'] . "</td>
+                            <td>" . $linha['metodo_pagamento'] . "</td>
                             <td>" . $linha['produto'] . "</td>
                             <td>" . $linha['quantidade'] . "</td>
                             <td>" . $linha['preco_unitario'] . "</td>
