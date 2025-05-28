@@ -95,7 +95,10 @@ p {
     display: inline;
     align-items: right;
     margin-right: 4px;
-    width: 20%;
+    width: 15%;
+}
+.quantidade p {
+    width: 100%;
 }
 
 .container-resume{
@@ -115,8 +118,7 @@ p {
     border-bottom: 1px solid #FFFF;
     margin-bottom: 50px;
 }
-.container-resume form {
-}
+
 .container-resume button {
     color: white;
     width: 100%;

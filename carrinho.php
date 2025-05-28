@@ -34,11 +34,18 @@
                 if(!isset($_SESSION['carrinho'])) {
                     $_SESSION['carrinho'] = [];
                 }
+
                 if(isset($_POST['id'])) {
                     $id = (int) $_POST['id'];
-                    if(!in_array($id, $_SESSION['carrinho'])) {
-                        $_SESSION['carrinho'][] = $id;
+
+                    if(isset($_SESSION['carrinho'][$id])){
+                        $_SESSION['carrinho'][$id]++;
                     }
+                    else{
+                        $_SESSION['carrinho'][$id] = 1;
+                    }
+
+
                 }
                
 
@@ -48,31 +55,56 @@
                 } else {
     
                 if (isset($_GET['remover'])) {
-                $id_remover = (int) $_GET['remover'];
-                if (($key = array_search($id_remover, $_SESSION['carrinho'])) !== false) {
-                    unset($_SESSION['carrinho'][$key]);
-                    $_SESSION['carrinho'] = array_values($_SESSION['carrinho']); // Reorganiza os índices
+                    $id_remover = (int) $_GET['remover'];
+                    if (isset($_SESSION['carrinho'][$id_remover])) {
+                        unset($_SESSION['carrinho'][$id_remover]);
+                    }
                 }
+
+                if (isset($_GET['adicionar'])) {
+                    $id_adicionar = (int) $_GET['adicionar'];  
+                    if (isset($_SESSION['carrinho'][$id_adicionar])) {
+                        $_SESSION['carrinho'][$id_adicionar]++;
+                    } else {
+                        $_SESSION['carrinho'][$id_adicionar] = 1;
+                    }
                 }
+
+                if (isset($_GET['tirar'])) {
+                    $id_tirar = (int) $_GET['tirar'];
+                    if (isset($_SESSION['carrinho'][$id_tirar])) {
+                        $_SESSION['carrinho'][$id_tirar]--;
+                        if ($_SESSION['carrinho'][$id_tirar] <= 0) {
+                            unset($_SESSION['carrinho'][$id_tirar]);
+                        }
+                    }
+                }
+
                 $produtosCarrinho = [];
                 $total = 0;
                 $statement = $conexao->prepare("SELECT * from produtos WHERE id = ?");
-                foreach($_SESSION['carrinho'] as $ids){
-                                        $statement->bind_param("i",$ids);
+                foreach($_SESSION['carrinho'] as $ids => $qtd){
+                    $statement->bind_param("i",$ids);
                     $statement->execute();
                     $result = $statement->get_result();
                     $produto = $result->fetch_assoc();
+
                 if($produto) {
                     echo    "
-                            <div class='produto'>
-                                <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
-                                <h3>{$produto['nome']}</h3>
-                                <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
+                        <div class='produto'>
+                            <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
+                            <h3>{$produto['nome']}</h3>
+                            <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
+                            <p class='quantidade'>
+                                Qtd: {$qtd}
+                                <a href='carrinho.php?adicionar={$produto['id']}' class='adicionar'>🔼</a>
+                                <a href='carrinho.php?tirar={$produto['id']}' class='tirar'>🔽</a>
                                 <a href='carrinho.php?remover={$produto['id']}' class='botao-remover'>🗑️</a>
-                            </div>
+                            </p>
+                        </div>
                             ";
                     $produtosCarrinho[] = $produto;
-                    $total += $produto['preco'];
+                    $total += $produto['preco'] * $qtd;
                 } else {
                     echo "<p>Produto não encontrado.</p>";
                 }
@@ -82,7 +114,7 @@
             }
         ?>
         </div>
-
+        
         <div class="container-resume">
             <h3>Resumo</h3>
             <?php

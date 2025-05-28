@@ -50,9 +50,12 @@
 
             include("banco.php"); 
 
+            $id_produto = $_POST['id'];
             $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
 
-            $sql = "SELECT * FROM produtos WHERE qtd_estoque > 0";
+            $sql = "SELECT * FROM produtos WHERE id = ? AND qtd_estoque > 0";
+            $statement->bind_param("i",$id);
+
 
             if(!empty($busca)){
                 $sql .= " AND LOWER(nome) LIKE LOWER('%$busca%')";
@@ -63,8 +66,7 @@
             if($resultado->num_rows > 0){
                 while($produto = $resultado->fetch_assoc()){
                     
-                    echo "<a class='linkao' href='tela_descricao_produto.php'>
-                            <div class='produto'>
+                    echo "<div class='produto'>
                             <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
                             <h3>{$produto['nome']}</h3>
                             <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
@@ -74,8 +76,7 @@
                                     <button>Adicionar ao Carrinho</button>
                                 </form>
                             </div>
-                        </div>
-                        </a>";
+                        </div>";
                 }
             }else{
                 echo "<p>Nenhum produto encontrado.</p>";
