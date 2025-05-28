@@ -63,19 +63,23 @@
             if($resultado->num_rows > 0){
                 while($produto = $resultado->fetch_assoc()){
                     
-                    echo "<a class='linkao' href='tela_descricao_produto.php'>
-                            <div class='produto'>
-                            <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
-                            <h3>{$produto['nome']}</h3>
-                            <p class='preco'>R$ ". number_format($produto['preco'], 2, ',','.') . "</p>
+                    echo "<div class='produto'>
+                            <a href='tela_descricao_produto.php?id={$produto['id']}'>
+                                <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
+                            </a>
+                            <h3>
+                                <a href='descricao_produtos.php?id={$produto['id']}'>
+                                    {$produto['nome']}
+                                </a>
+                            </h3>
+                            <p class='preco'>R$ " . number_format($produto['preco'], 2, ',', '.') . "</p>
                             <div class='botoes'>
                                 <form action='carrinho.php' method='POST'>
                                     <input type='hidden' name='id' value='{$produto['id']}'>
                                     <button>Adicionar ao Carrinho</button>
                                 </form>
                             </div>
-                        </div>
-                        </a>";
+                         </div>";
                 }
             }else{
                 echo "<p>Nenhum produto encontrado.</p>";

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StoreComp</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="descricao_produto.css">
 </head>
 <body>
     <header>
@@ -50,21 +50,28 @@
 
             include("banco.php"); 
 
-            $id_produto = $_POST['id'];
-            $busca = isset($_POST['buscar']) ? trim($_POST['buscar']) : '';
 
-            $sql = "SELECT * FROM produtos WHERE id = ? AND qtd_estoque > 0";
-            $statement->bind_param("i",$id);
+            if (isset($_GET['id'])) {
+                $id = (int) $_GET['id'];
 
-
-            if(!empty($busca)){
-                $sql .= " AND LOWER(nome) LIKE LOWER('%$busca%')";
+                $statement = $conexao->prepare("SELECT * FROM produtos WHERE id = ?");
+                $statement->bind_param("i", $id);
+                $statement->execute();
+                $result = $statement->get_result();
+                $produto = $result->fetch_assoc();
+            } else {
+                echo "Produto não encontrado.";
+                exit;
             }
 
-            $resultado = $conexao->query($sql);
 
-            if($resultado->num_rows > 0){
-                while($produto = $resultado->fetch_assoc()){
+                $statement = $conexao->prepare("SELECT * FROM produtos WHERE id = ?");
+                $statement->bind_param("i", $id);
+                $statement->execute();
+                $result = $statement->get_result();
+                $produto = $result->fetch_assoc();
+
+            if($produto){
                     
                     echo "<div class='produto'>
                             <img src='{$produto['imagem']}' alt='{$produto['nome']}'>
@@ -77,8 +84,8 @@
                                 </form>
                             </div>
                         </div>";
-                }
-            }else{
+            }
+            else{
                 echo "<p>Nenhum produto encontrado.</p>";
             }
             $conexao->close();
