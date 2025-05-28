@@ -23,7 +23,7 @@ if($result->num_rows === 1){
     if($senha == $usuario['senha']) {
         $_SESSION['usuario'] = $usuario['usuario'];
         $_SESSION['id'] = $usuario['id'];
-        header("Location: tela_finalizar_compra.php"); 
+        header("Location: metodo_pagamento.php"); 
         exit;
     }
     else{
