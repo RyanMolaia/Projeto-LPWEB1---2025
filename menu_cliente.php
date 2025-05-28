@@ -11,8 +11,8 @@ if (!isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conta Adminitrativa</title>
-    <link rel="stylesheet" href="suporte.css">
+    <title>Conta Cliente</title>
+    <link rel="stylesheet" href="menu_cliente.css">
 </head>
 <body>
     <header>

@@ -23,6 +23,15 @@ body {
     text-decoration: none;
 }
 
+.esquerda {
+    display: flex;
+    align-items: center;
+}
+
+.esquerda .logo {
+    margin-left: 10px;
+}
+
 .meio {
     display: flex;
     flex: 1;
@@ -35,7 +44,7 @@ body {
 }
 
 .meio form input{
-    padding:9px;
+    padding:8px;
     width: 300px;
     border: none;
     border-radius: 4px 0 0 4px;
@@ -49,6 +58,12 @@ body {
     color: white;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
+}
+
+.direita{
+    min-width: 100px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .direita a{
@@ -95,9 +110,18 @@ body {
 #sidebar:target{
     transform: translateX(0);
 }
-.suporte{
+
+.voltar{
     padding-top: 20px;
     border-top: 1px solid white;
+}
+
+.voltar a{
+    color: white;
+    text-decoration: none;
+}
+.suporte{
+    padding-top: 20px;
 }
 
 .suporte a{
@@ -117,72 +141,5 @@ body {
 #sidebar ul li a{
     color: white;
     text-decoration: none;
-}
-
-.exebicao-produtos{
-    display: grid;
-    gap: 20px;
-    padding: 20px;
-    height: 100%;
-}
-
-.produto{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.produto img{
-    width: 20%;
-    height: 150px;
-    margin-bottom: 10px;
-}
-
-.produto .preco{
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.produto {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.produto h3{
-    font-size: 14px;
-    width: 100%;
-    margin-bottom: 8px;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.produto p{
-    font-size: 16px;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 10px;
-}
-
-.produto .btn-group {
-    display: flex;
-    gap: 10px;
-    margin-top: auto;
-}
-
-.produto .botoes button{
-    padding: 8px 12px;
-    background-color: #00ff22;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    flex: 1;
-}
-
-.produto .botoes button:hover {
-    background-color: #046b16;
 }
 
