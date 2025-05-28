@@ -29,7 +29,6 @@ if (!isset($_SESSION['id'])) {
                     <option value="Cartão de Crédito">Cartão de Crédito</option>
                     <option value="Pix">Pix</option>
                     <option value="Boleto">Boleto</option>
-                    <option value="Dinheiro">Dinheiro</option>
             </select>
             <button>Confirmar compra</button>
         </form>
