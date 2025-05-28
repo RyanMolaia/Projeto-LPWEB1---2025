@@ -54,7 +54,7 @@ if (isset($_SESSION['sucesso'])) {
     </header
         <main class="tabela-main">
             <div class="busca">
-                <form action="cadastro_funcionario.php" method="POST">
+                <form action="funcionarios.php" method="POST">
                     <input type="text" name="buscar" placeholder="Buscar">
                     <button class="pesquisa">🔍</button>
                 </form>

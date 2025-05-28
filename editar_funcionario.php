@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text" name="usuario" value="<?php echo $dados["usuario"]; ?>" />
 
                         <label>Senha</label>
-                        <input type="number" name="senha" value="<?php echo $dados["senha"]; ?>" />
+                        <input type="password" name="senha" value="<?php echo $dados["senha"]; ?>" />
                     </div>
                     <div class="meio_input">
                         <label>E-Mail</label>
