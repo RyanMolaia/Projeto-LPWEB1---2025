@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15/05/2025 às 00:48
+-- Tempo de geração: 28/05/2025 às 06:25
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -53,7 +53,7 @@ CREATE TABLE `produtos` (
   `nome` varchar(255) NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `categorias_id` int(11) DEFAULT NULL,
-  `imagem` blob DEFAULT NULL,
+  `imagem` varchar(255) DEFAULT NULL,
   `qtd_estoque` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -62,11 +62,12 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `categorias_id`, `imagem`, `qtd_estoque`) VALUES
-(1, 'Notebook-Gamer-Acer-Nitro-V15-Intel-Core-i5-13-Gera-o-8GB-RTX-3050-SSD-512GB-Tela-15-6-Full-HD-Linux', 4599.00, 3, 0x696d672f6e6f7465626f6f6b2e77656270, 5),
-(2, 'Monitor-gamer-lg-ultragear-24-full-hd-ips-180hz-1ms-displayport-e-hdmi-nvidia-g-sync-amd-freesync-hdr10-srgb-99-24gs60f', 899.99, 2, 0x696d672f6d6f6e69746f722e77656270, 3),
-(3, 'PC-Gamer-BluePC-Legacy-AMD-Ryzen-5-5600GT-16GB-RAM-Radeon-VEGA-7-SSD-480GB-Fonte-500W-PGBP-1001LEG_1744900832', 2399.00, 1, 0x696d672f6465736b746f702e77656270, 10),
-(5, 'Placa-de-Video-rx-7800xt-gaming-16g-xfx-speedster-qick319-radeon-16gb-ddr6-hdmi-3xdp-3-fan-rx-78tqickf9_1719595732_m', 3899.99, 4, 0x696d672f506c6163612d64652d566964656f2d52782d47616d696e672e77656270, 50),
-(6, 'Water-Cooler-Husky-Freezy-argb-240mm-amd-e-intel-preto-hwt200pt_1732644962_m', 207.90, 4, 0x696d672f57617465722d436f6f6c65722d4875736b792e77656270, 0);
+(1, 'Notebook-Gamer-Acer-Nitro-V15-Intel-Core-i5-13-Gera-o-8GB-RTX-3050-SSD-512GB-Tela-15-6-Full-HD-Linux', 4599.00, 3, 'img/notebook.webp', 5),
+(2, 'Monitor-gamer-lg-ultragear-24-full-hd-ips-180hz-1ms-displayport-e-hdmi-nvidia-g-sync-amd-freesync-hdr10-srgb-99-24gs60f', 899.99, 2, 'img/monitor.webp', 3),
+(3, 'PC-Gamer-BluePC-Legacy-AMD-Ryzen-5-5600GT-16GB-RAM-Radeon-VEGA-7-SSD-480GB-Fonte-500W-PGBP-1001LEG_1744900832', 2399.00, 1, 'img/desktop.webp', 10),
+(5, 'Placa-de-Video-rx-7800xt-gaming-16g-xfx-speedster-qick319-radeon-16gb-ddr6-hdmi-3xdp-3-fan-rx-78tqickf9_1719595732_m', 3899.99, 4, 'img/Placa-de-Video-Rx-Gaming.webp', 50),
+(6, 'Water-Cooler-Husky-Freezy-argb-240mm-amd-e-intel-preto-hwt200pt_1732644962_m', 207.90, 4, 'img/Water-Cooler-Husky.webp', 5),
+(15, 'teste', 55.00, 3, 'img/download.webp', 25);
 
 -- --------------------------------------------------------
 
@@ -76,8 +77,23 @@ INSERT INTO `produtos` (`id`, `nome`, `preco`, `categorias_id`, `imagem`, `qtd_e
 
 CREATE TABLE `usuarios` (
   `usuario` varchar(100) NOT NULL,
-  `senha` varchar(100) NOT NULL
+  `senha` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefone` int(15) NOT NULL,
+  `adm` tinyint(1) NOT NULL DEFAULT 0,
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`usuario`, `senha`, `email`, `telefone`, `adm`, `criado_em`, `id`) VALUES
+('Ryan', '10', 'admin@storecomp.com', 2147483647, 1, '2025-05-28 02:29:31', 1),
+('teste', '1', 'teste@teste', 1452, 0, '2025-05-28 02:51:42', 2),
+('cliente', '20', 'cliente@cliente.com.br', 2147483647, 0, '2025-05-28 02:53:23', 3),
+('Lucas', '20', 'lucas@storecomp.com', 2147483647, 1, '2025-05-28 03:16:00', 6);
 
 -- --------------------------------------------------------
 
@@ -87,8 +103,16 @@ CREATE TABLE `usuarios` (
 
 CREATE TABLE `vendas` (
   `id` int(11) NOT NULL,
-  `data_venda` date NOT NULL
+  `data_venda` date NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `vendas`
+--
+
+INSERT INTO `vendas` (`id`, `data_venda`, `id_usuario`) VALUES
+(1, '2025-05-28', 3);
 
 -- --------------------------------------------------------
 
@@ -100,8 +124,16 @@ CREATE TABLE `vendas_itens` (
   `id` int(11) NOT NULL,
   `vendas_id` int(11) DEFAULT NULL,
   `produtos_id` int(11) DEFAULT NULL,
-  `quantidade` int(11) NOT NULL
+  `quantidade` int(11) NOT NULL,
+  `preco_unitario` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `vendas_itens`
+--
+
+INSERT INTO `vendas_itens` (`id`, `vendas_id`, `produtos_id`, `quantidade`, `preco_unitario`) VALUES
+(1, 1, 1, 2, 4599.00);
 
 --
 -- Índices para tabelas despejadas
@@ -121,10 +153,17 @@ ALTER TABLE `produtos`
   ADD KEY `categorias_id` (`categorias_id`);
 
 --
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `vendas`
 --
 ALTER TABLE `vendas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario` (`id_usuario`);
 
 --
 -- Índices de tabela `vendas_itens`
@@ -142,25 +181,31 @@ ALTER TABLE `vendas_itens`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `vendas`
 --
 ALTER TABLE `vendas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `vendas_itens`
 --
 ALTER TABLE `vendas_itens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas
@@ -171,6 +216,12 @@ ALTER TABLE `vendas_itens`
 --
 ALTER TABLE `produtos`
   ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`categorias_id`) REFERENCES `categorias` (`id`);
+
+--
+-- Restrições para tabelas `vendas`
+--
+ALTER TABLE `vendas`
+  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Restrições para tabelas `vendas_itens`
