@@ -40,7 +40,7 @@
             <a href="loja.php">Voltar</a>
         </div>
         <div class="suporte">
-            <a href="">Suporte</a>
+            <a href="suporte.php">Suporte</a>
         </div>
     </aside>
     <main class="exebicao-produtos">

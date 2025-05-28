@@ -13,14 +13,14 @@
                 <a href="#sidebar" id="btn-departamento">☰</a>
             </div>
             <div>
-                <a href="loja.php"><img class="logo" src="img/logo.png" alt=""></a>
+                <a href=""><img class="logo" src="img/logo.png" alt=""></a>
             </div>
             <div class="meio">
                 <h3>Menu Administrativo</h3>
             </div>
             <div class="direita">
                 <a href="">👤 Conta</a>
-                <a href="logout.php">🚪 Sair</a>
+                <a href="logout_adm.php">🚪 Sair</a>
             </div>
     </header>
             <aside id="sidebar">

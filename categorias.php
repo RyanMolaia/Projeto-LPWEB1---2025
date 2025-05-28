@@ -41,7 +41,7 @@ if (isset($_SESSION['sucesso'])) {
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
                         <li><a href="produtos.php">Produtos</a></li>
-                        <li><a href="funcionários.php">Funcionários</a></li>
+                        <li><a href="funcionarios.php">Funcionários</a></li>
                         <li><a href="relatorios.php">Relatórios</a></li>
                     </ul>
             <div class="voltar">

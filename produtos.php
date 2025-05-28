@@ -40,7 +40,7 @@ if (isset($_SESSION['sucesso'])) {
             <aside id="sidebar">
                 <a href="#" id="fechar-sidebar">🡸</a>
                     <ul>
-                        <li><a href="categorias.php">Funcionários</a></li>
+                        <li><a href="categorias.php">Categorias</a></li>
                         <li><a href="funcionarios.php">Funcionários</a></li>
                         <li><a href="relatorios.php">Relatórios</a></li>
                     </ul>
