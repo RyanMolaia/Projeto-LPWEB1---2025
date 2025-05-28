@@ -28,7 +28,7 @@
                     <ul>
                         <li><a href="produtos.php">Produtos</a></li>
                         <li><a href="categorias.php">Categorias</a></li>
-                        <li><a href="funcionarios.php">Funcionário</a></li>
+                        <li><a href="funcionarios.php">Funcionario</a></li>
                         <li><a href="relatorios.php">Relatórios de Vendas</a></li>
                     </ul>
             <div class="suporte">
