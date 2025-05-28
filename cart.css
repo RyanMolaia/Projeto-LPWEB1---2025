@@ -55,7 +55,7 @@ body {
 .container-product{
     height: auto;
     width: 1200px;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 50px;
     background-color: black;
     border-radius: 8px;
@@ -80,7 +80,7 @@ body {
     width: auto;
 }
 .produto h3 {
-    width: 1000px;
+    max-width: 60%;
 }
 .produto a {
     text-decoration: none;
@@ -95,14 +95,14 @@ p {
     display: inline;
     align-items: right;
     margin-right: 4px;
-    width: 10%;
+    width: 20%;
 }
 
 .container-resume{
     height: auto;
     width: 480px;
     padding: 30px 40px;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 50px;
     background-color: black;
     border-radius: 8px;

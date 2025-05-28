@@ -23,14 +23,14 @@ if($result->num_rows === 1){
     if($senha == $usuario['senha']) {
         $_SESSION['usuario'] = $usuario['usuario'];
         $_SESSION['id'] = $usuario['id_usuario'];
-        header("Location: menu_cliente.php"); 
+        header("Location: tela_finalizar_compra.php"); 
         exit;
     }
     else{
        echo "
        <script>
             alert('Senha Incorreta');
-            window.location.href = 'tela_login.php';
+            window.location.href = 'tela_login_finaliza_compra.php';
         </script>
         ";
     }
@@ -39,7 +39,7 @@ else{
         echo "
         <script>
             alert('Usuário desconhecido!');
-            window.location.href = 'tela_login.php';
+            window.location.href = 'tela_login_finaliza_compra.php';
         </script>
                 ";
 }
